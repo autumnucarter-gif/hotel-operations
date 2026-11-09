@@ -26,7 +26,22 @@ public class Employee {
     public String getDepartment() {
         return department;
 
-
     }
-
+    public double getRegularHours() {
+        if (this.hoursWorked > 40.0) {
+            return 40.0;
+        }
+        return this.hoursWorked;
+    }
+    public double getOvertimeHours() {
+        if (this.hoursWorked > 40.0) {
+            return this.hoursWorked - 40.0;
+        }
+        return 0.0;
+    }
+    public double getTotalPay() {
+        double regularPay = getRegularHours() * this.payRate;
+        double overtimePay = getOvertimeHours() * this.payRate;
+        return regularPay + overtimePay;
+    }
 }
